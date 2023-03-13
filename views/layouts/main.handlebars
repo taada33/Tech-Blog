@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    {{body}}
+    <header>
+        <nav>
+            <button>Home</button>
+            <button>Dashboard</button>
+            {{#if logged_in}}
+            <button>Logout</button>
+            {{else}}
+            <button>Login</button>
+            {{/if}}
+        </nav>
+        <h1>The Tech Blog</h1>
+    </header>
+    {{{body}}}
 </body>
 </html>
