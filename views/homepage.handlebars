@@ -1,7 +1,23 @@
-{{#each posts as |post| }}
-<div class="card">
-  <h3>{{post.title}}</h3>
-  <h4>{{post.user.name}}  {{post.updatedAt}}</h4>
-  <p>{{post.content}}</p>
+
+<div class="postsContainer">
+  {{#each posts as |post| }}
+  <div class="card post">
+    <h3>{{post.title}}  {{post.updatedAt}}</h3>
+    <div class="content hidden">
+      <p>{{post.content}}</p>
+      <p>- posted by {{post.user.name}} </p>
+    </div>
+    
+    {{#each post.comments as |comment| }}
+    <div class="card comment hidden">
+      <p>{{comment.content}}</p>
+      <p>- comment by {{comment.name}} at {{comment.updatedAt}}</p>
+    </div>
+
+    {{/each}}
+
+  <button class="add-comment button hidden">Add Comment</button>
+  </div>
+  {{/each}}
+  
 </div>
-{{/each}}
