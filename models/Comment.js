@@ -25,17 +25,9 @@ Comment.init(
         post_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'post',
                 key: 'id',
             },
-        },
-        created_at: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
-        updated_at: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
         },
     },
     {
