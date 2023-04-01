@@ -114,11 +114,11 @@ router.post('/post', async (req, res) => {
 //creating new comment
 router.post('/comment', async (req,res) => {
   try {
+    console.log(req.body);
     const commentData = await Comment.create({
       content: req.body.content,
-      user_id: +req.body.user_id,
+      user_id: +req.session.user_id || req.body.user_id,
       post_id: +req.body.post_id,
-      // user_id: req.session.user_id,
     })
     res.status(200).json(commentData);
   } catch (err) {

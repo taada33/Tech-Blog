@@ -35,7 +35,7 @@ if(loginBtn !== null){
 const containerEl = document.querySelector('.postsContainer')
 
 
-const clickHandler = function(event){
+const clickHandler = async function(event){
     if(event.target.classList.contains('post')){
         for(let i = 0; i < event.target.children.length; i++){
 
@@ -55,6 +55,7 @@ const clickHandler = function(event){
         event.target.classList.add('hidden');
         const commentForm = document.createElement('form');
         const textArea = document.createElement('textarea');
+        textArea.classList.add('content')
         const submitComment = document.createElement('button');
         submitComment.innerHTML = 'Submit Comment'
         submitComment.classList.add('submit-btn')
@@ -64,11 +65,35 @@ const clickHandler = function(event){
     }
     if(event.target.classList.contains('submit-btn')){
         event.preventDefault();
-        console.log('hello')
+        // console.log(event.target.parentElement)
+        const textAreas = document.querySelectorAll('.content');
+        let content;
+        textAreas.forEach(element => {
+            if(element.parentElement.parentElement.getAttribute('data-post_id') === event.target.parentElement.getAttribute('data-post_id')){
+                content = element.value;
+                console.log(content)
+            }
+            
+        });
+        const response = await fetch('api/users/comment', {
+            method: 'POST',
+            body: JSON.stringify({
+                content,
+                post_id: event.target.parentElement.getAttribute('data-post_id')
+            }),
+            headers: {'Content-Type': 'application/json'},
+        })
+        if (response.ok) {
+            document.location.replace('/');
+          } else {
+            alert('Failed to comment');
+          }
     }
 }
 
-containerEl.addEventListener('click', clickHandler);
+if(containerEl){
+    containerEl.addEventListener('click', clickHandler);
+}
 
 
 

@@ -18,6 +18,8 @@ router.get('/', async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
+    console.log(posts);
+
     //maps user names from users array to their individual comments on posts
 
     posts.forEach(post => {
