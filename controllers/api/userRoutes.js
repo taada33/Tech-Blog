@@ -67,6 +67,7 @@ router.post('/logout', (req, res) => {
 //get users posts
 router.get('/:id', async (req,res) => {
   try {
+    console.log(req.params.id)
     const userData = await User.findbyPk(req.params.id, 
       {
       include: { model: Post},
@@ -96,11 +97,13 @@ router.get('/:id', async (req,res) => {
 //creating new post
 router.post('/post', async (req, res) => {
   try {
+    console.log(req.body)
     const postData = await Post.create({
       title: req.body.title,
       content: req.body.content,
-      user_id: req.session.user_id,
+      user_id: `${req.session.user_id}`
     });
+    
     res.status(200).json(postData);
   } catch (err) {
     res.status(400).json(err);
@@ -108,23 +111,39 @@ router.post('/post', async (req, res) => {
 })
 
 //update post
-
+router.put('/update', async (req,res) => {
+  try {
+    const postData = await Post.update({content: req.body.content}, {where: { id: req.body.post_id}})
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+})
 //delete post
+router.delete('/delete', async(req,res) => {
+  try {
+    const postData = Post.destroy({where: { id: req.body.post_id}})
+    res.status(200).json(postData)
+  } catch (err) {
+    res.status(400).json(err)
+  }
+})
 
 //creating new comment
 router.post('/comment', async (req,res) => {
   try {
-    console.log(req.body);
     const commentData = await Comment.create({
       content: req.body.content,
       user_id: +req.session.user_id || req.body.user_id,
-      post_id: +req.body.post_id,
+      post_id: req.body.post_id,
     })
     res.status(200).json(commentData);
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+//future development: 
 
 //update comment
 

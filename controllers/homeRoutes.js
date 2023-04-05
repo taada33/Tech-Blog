@@ -4,7 +4,6 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    console.log(req.session.logged_in);
     const postData = await Post.findAll({
       include: [{ 
         model: User,
@@ -17,8 +16,6 @@ router.get('/', async (req, res) => {
     const users = userData.map((user) => user.get({ plain: true}));
 
     const posts = postData.map((post) => post.get({ plain: true }));
-
-    console.log(posts);
 
     //maps user names from users array to their individual comments on posts
 
@@ -48,20 +45,24 @@ router.get('/login', (req, res) => {
 
 
 router.get('/dashboard', async (req,res) => {
-  if(!req.session.logged_in){
-    res.redirect('/login')
-    return;
+  try {
+    if(!req.session.logged_in){
+      res.redirect('/login')
+      return;
+    }
+    const postData = await Post.findAll({where: {user_id: req.session.user_id},
+      include: [{ model: User, attributes: {exclude: ['password']}}]
+  })
+
+    const posts = postData.map((post) => post.get({ plain: true}))
+    
+    res.render('dashboard', {
+      posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (error) {
+    res.status(500).json(error)
   }
-
-  const userData = await User.findByPk(req.session.user_id, {
-    // include: [{ model: Post}, { model: Comment}]
-  })
-
-  console.log(userData)
-
-  res.render('dashboard',{
-    logged_in: req.session.logged_in,
-  })
 })
 
 module.exports = router;

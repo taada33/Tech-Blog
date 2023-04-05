@@ -26,14 +26,6 @@ Post.init(
                 key: 'id',
             },
         },
-        created_at: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
-        updated_at: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
     },
     {
         sequelize,
