@@ -1,0 +1,14 @@
+<div class="postsContainer">
+    {{#each posts as |post| }}
+    <div class="card post" data-post_id="{{post.id}}">
+      <h3>{{post.title}} <span>{{{formatTime post.updatedAt}}}</span> </h3>
+      <div class="hidden">
+        <p>{{post.content}}</p>
+        <p>- posted by {{post.user.name}} </p>
+        <button class="update-post">Edit Post</button>
+        <button class="delete-post">Delete Post</button>
+      </div>
+    </div>
+    {{/each}}
+<button class="add-post">Create New Post</button>
+</div>

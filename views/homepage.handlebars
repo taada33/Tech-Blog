@@ -2,7 +2,7 @@
 <div class="postsContainer">
   {{#each posts as |post| }}
   <div class="card post" data-post_id="{{post.id}}">
-    <h3>{{post.title}}  {{post.updatedAt}}</h3>
+    <h3>{{post.title}} <span>{{{formatTime post.updatedAt}}}</span> </h3>
     <div class="hidden">
       <p>{{post.content}}</p>
       <p>- posted by {{post.user.name}} </p>
@@ -11,13 +11,16 @@
     {{#each post.comments as |comment| }}
     <div class="card comment hidden">
       <p>{{comment.content}}</p>
-      <p>- comment by {{comment.name}} at {{comment.updatedAt}}</p>
+      <p>- comment by {{comment.name}}, {{{formatTime comment.updatedAt}}}</p>
     </div>
 
     {{/each}}
-
+  {{!-- {{#if logged_in}} --}}
   <button class="add-comment button hidden">Add Comment</button>
+  {{!-- {{/if}} --}}
   </div>
+
+
   {{/each}}
-  
 </div>
+

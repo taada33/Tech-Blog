@@ -10,7 +10,12 @@ const login = async () => {
             body: JSON.stringify({name: username, password: password}),
             headers: {'Content-Type': 'application/json'}
         })
-        setTimeout(document.location.pathname = '/', 1500)
+        if(response.ok){
+            setTimeout(document.location.pathname = '/', 1500)
+            return;
+        }
+        document.querySelector('#password').value = "";
+        alert('Incorrect username or password')
     }else{
         alert('Missing login form input(s)')
     }
