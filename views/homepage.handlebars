@@ -15,11 +15,10 @@
     </div>
 
     {{/each}}
-  {{!-- {{#if logged_in}} --}}
-  <button class="add-comment button hidden">Add Comment</button>
-  {{!-- {{/if}} --}}
+    {{#if post.loggedIn}}
+    <button class="add-comment button hidden">Add Comment</button>
+    {{/if}}
   </div>
-
 
   {{/each}}
 </div>

@@ -4,8 +4,13 @@ const { User, Post, Comment } = require('../../models');
 //creating new user
 router.post('/register', async (req,res) => {
   try {
-
-    console.log(req.body);
+    const userData = await User.findAll({attributes: {exclude: 'password'}})
+    const users = userData.map((user) => user.get({plain: true}))
+    console.log(users)
+    if(users.some((user) => user.name === req.body.name)){
+      res.status(400).json('user with the name already exists')
+      return;
+    }
     const newUser = await User.create({
       name: req.body.name,
       password: req.body.password,
