@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
     //maps user names from users array to their individual comments on posts
 
     posts.forEach(post => {
+      post.loggedIn = req.session.logged_in
       post.comments.forEach(comment => {
         comment.name = users[comment.user_id - 1].name
       })

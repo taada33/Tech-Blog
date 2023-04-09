@@ -2,7 +2,6 @@
 //current time and updated time
 module.exports = {
     formatTime: (date) => {
-        // console.log(date)
         const now = new Date();
         const seconds = now.getSeconds() - date.getSeconds();
         const minutes = now.getMinutes() - date.getMinutes();
@@ -67,10 +66,4 @@ module.exports = {
         }
     },
 
-    ifEquals: (updated, created) => {
-        if(updated === created){
-            return `<h3>{{post.title}} <span>{{{formatTime post.updatedAt}}}</span> </h3>`
-        }
-        return `<h3>{{post.title}} <span>updated {{{formatTime post.updatedAt}}}</span> </h3>`
-    }
 }

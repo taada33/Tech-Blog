@@ -11,7 +11,7 @@ const login = async () => {
             headers: {'Content-Type': 'application/json'}
         })
         if(response.ok){
-            setTimeout(document.location.pathname = '/', 1500)
+            setTimeout(document.location.pathname = '/', 2000)
             return;
         }
         document.querySelector('#password').value = "";
@@ -36,7 +36,11 @@ const register = async () => {
             body: JSON.stringify({name: username, password}),
             headers: {'Content-Type': 'application/json'}
         })
-        setTimeout(document.location.pathname = '/', 1500)
+        if(response.ok){
+            setTimeout(document.location.pathname = '/', 2000)
+        }else{
+            alert('user with this name already exists')
+        }
     }else{
         alert('Missing registration form input(s)')
     }

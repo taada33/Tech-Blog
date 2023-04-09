@@ -1,12 +1,99 @@
+body{
+    background-color:bisque;
+}
+
+header{
+    margin-top:0;
+    background-color: blanchedalmond;
+}
+
+nav{
+    display:flex;
+    padding: 1rem;
+    margin-right: 5rem;
+    justify-content: end;
+    align-items: end;
+}
+
+h1{
+    text-align: center;
+    padding-bottom: 5rem;
+}
+
 .hidden{
     display: none;
 }
 
 h3{
     pointer-events: none;
+    user-select: none;
 }
 
 span{
     font-size: 1rem;
     font-weight: normal;
 }
+
+.postsContainer{
+    margin: 10rem;
+    margin-top: 5rem;
+    align-items: center;
+}
+
+.post{
+    background-color: azure;
+}
+
+.comment{
+    background-color: rgb(106, 181, 247);
+}
+
+.card{
+    margin: 2rem;
+    padding: 1rem;
+}
+
+textarea{
+    width: 60rem;
+    height: 10rem;
+    resize: none;
+}
+
+.add-post{
+    margin-top: 5rem;
+    margin-left: 33rem;
+}
+
+.form{
+    position: absolute;
+    left: 33rem;
+    display: inline-block;
+    align-items: center;
+    text-align: right;
+    width: 20rem;
+}
+
+
+
+form button{
+    margin-top: 2rem;
+}
+
+button{
+  background-color: tan;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0.1rem;
+}
+
+button:hover{
+    background-color:aquamarine;
+}
+
+
+

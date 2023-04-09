@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/jass.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Tech Blog</title>
 </head>
 <body>
     <header>
         <nav>
-            <button class="home">Home</button>
-            <button class="dashboard">Dashboard</button>
+            <button class="home button">Home</button>
+            <button class="dashboard button">Dashboard</button>
             {{#if logged_in}}
-            <button class="logout">Logout</button>
+            <button class="logout button">Logout</button>
             {{else}}
-            <button class="login">Login</button>
+            <button class="login button">Login</button>
             {{/if}}
         </nav>
         <h1>The Tech Blog</h1>
