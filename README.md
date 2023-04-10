@@ -25,7 +25,7 @@ To deploy to localhost, first install all the required packages by running ```np
 
 To view the application, please visit [https://tech-blog-ta.herokuapp.com/](https://tech-blog-ta.herokuapp.com/)
 
-The homepage displays all the posts and their respective comments. To make a comment, users must first be logged in. The login page allows users to login as well as register an account. The dashboard displays any posts made by the user, and allows them to create new posts.
+The homepage displays all the posts and their respective comments. To make a comment, users must first be logged in. The login page allows users to login as well as register an account. The dashboard displays any posts made by the user, and allows them to create, edit, and delete posts.
     
 ## Contributing
 
